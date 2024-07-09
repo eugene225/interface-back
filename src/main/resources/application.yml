@@ -1,13 +1,13 @@
 spring:
   jpa:
     generate-ddl: true
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        open-in-view: false
     hibernate:
       ddl-auto: update
-      properties:
-        hibernate:
-          show_sql: true
-          format_sql: true
-          open-in-view: false
   datasource:
     url: jdbc:mariadb://${DB_HOST}:3306/${DB_NAME}
     username: ${DB_USERNAME}
@@ -27,3 +27,12 @@ springdoc:
 jwt:
   secret-key: ${JWT_SECRET_KEY}
   access-exp-time: 86400000
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        orm:
+          jdbc:
+            bind: TRACE
